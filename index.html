@@ -38,28 +38,34 @@
   <!-- <link rel="preload" as="document" href="/brochure.pdf"> -->
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased [font-family:Poppins,sans-serif]">
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-slate-900 focus:px-4 focus:py-2 focus:rounded-lg shadow">Skip to content</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-slate-900 focus:px-4 focus:py-2 focus:rounded-lg shadow overflow-x-hidden">Skip to content</a>
 
-  <header class="py-6 md:py-8">
-    <div class="container max-w-screen-xl mx-auto px-4">
-      <nav class="flex items-center justify-between">
-        <a href="/" class="inline-flex items-center gap-3">
-          <img src="assets/image/logowini4u.png" alt="Wine4U logo" class="h-16 w-16 rounded-full object-cover" loading="eager" fetchpriority="high" />
-          <span class="sr-only">Wine4U</span>
+<header class="py-5 md:py-8">
+  <div class="container max-w-screen-xl mx-auto px-4">
+    <nav class="flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand -->
+      <a href="/" class="inline-flex items-center gap-3 shrink-0">
+        <img src="/assets/image/logowini4u.png" alt="Wine4U logo"
+             class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover" loading="eager" fetchpriority="high" />
+        <span class="sr-only">Wine4U</span>
+      </a>
+
+      <!-- Links -->
+      <div class="w-full sm:w-auto flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-2">
+        <a href="#who" class="px-3 py-2 text-sm font-medium hover:underline">Who we are</a>
+        <a href="#what" class="px-3 py-2 text-sm font-medium hover:underline">What we do</a>
+        <a href="#partners" class="px-3 py-2 text-sm font-medium hover:underline">Partners</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:underline">Contact</a>
+        <a href="/Presentazione%20Personale.pdf" target="_blank" rel="noopener"
+           class="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500">
+          Brochure
         </a>
+        <a href="/ja/" class="px-3 py-2 text-sm font-medium border rounded-md hover:bg-slate-100" hreflang="ja">日本語</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-        <div class="flex items-center gap-3">
-          <a href="#who" class="px-4 py-2 text-sm font-medium hover:underline">Who we are</a>
-          <a href="#what" class="px-4 py-2 text-sm font-medium hover:underline">What we do</a>
-          <a href="#partners" class="px-4 py-2 text-sm font-medium hover:underline">Partners</a>
-          <a href="#contact" class="px-4 py-2 text-sm font-medium hover:underline">Contact</a>
-          <a href="/Presentazione Personale.pdf" target="_blank" rel="noopener" class="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500">Brochure</a>
-          <a href="/ja/" class="px-3 py-2 text-sm font-medium border rounded-md hover:bg-slate-100" hreflang="ja">日本語</a>
-
-        </div>
-      </nav>
-    </div>
-  </header>
 
   <main id="main">
     <!-- Hero -->
