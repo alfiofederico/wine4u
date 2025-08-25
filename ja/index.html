@@ -33,12 +33,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased [font-family:Poppins,sans-serif]">
+<body class="bg-slate-50 text-slate-800 antialiased [font-family:Poppins,sans-serif] overflow-x-hidden">
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-slate-900 focus:px-4 focus:py-2 focus:rounded-lg shadow">Skip to content</a>
 
 <header class="py-5 md:py-8">
   <div class="container max-w-screen-xl mx-auto px-4">
-    <nav class="flex flex-wrap items-center justify-between gap-3">
+    <nav class="flex items-center justify-between gap-3">
       <!-- Brand -->
       <a href="/ja/" class="inline-flex items-center gap-3 shrink-0">
         <img src="/assets/image/logowini4u.png" alt="Wine4U logo"
@@ -46,21 +46,49 @@
         <span class="sr-only">Wine4U</span>
       </a>
 
-      <!-- Links -->
-      <div class="w-full sm:w-auto flex flex-wrap items-center justify-center sm:justify-end gap-x-3 gap-y-2">
-        <a href="#who" class="px-3 py-2 text-sm font-medium hover:underline">Who we are</a>
-        <a href="#what" class="px-3 py-2 text-sm font-medium hover:underline">What we do</a>
-        <a href="#partners" class="px-3 py-2 text-sm font-medium hover:underline">Partners</a>
-        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:underline">Contact</a>
+      <!-- Desktop links -->
+      <div class="hidden sm:flex items-center gap-x-3">
+        <a href="#who" class="px-3 py-2 text-sm font-medium hover:underline">私たちについて</a>
+        <a href="#what" class="px-3 py-2 text-sm font-medium hover:underline">事業内容</a>
+        <a href="#partners" class="px-3 py-2 text-sm font-medium hover:underline">パートナー</a>
+        <a href="#contact" class="px-3 py-2 text-sm font-medium hover:underline">お問い合わせ</a>
+        <a href="/" class="px-3 py-2 text-sm font-medium border rounded-md hover:bg-slate-100" hreflang="en">English</a>
         <a href="/Presentazione%20Personale.pdf" target="_blank" rel="noopener"
            class="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-50">
-          Brochure
+          ブローシャー
         </a>
-        <a href="/" class="px-3 py-2 text-sm font-medium border rounded-md hover:bg-slate-100" hreflang="en">English</a>
+      </div>
+
+      <!-- Mobile right side: hamburger + brochure -->
+      <div class="flex items-center gap-2 sm:hidden">
+        <a href="/Presentazione%20Personale.pdf" target="_blank" rel="noopener"
+           class="px-4 py-2 font-medium bg-gray-700 text-gray-50 text-xs rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-50">
+          ブローシャー
+        </a>
+
+        <button id="nav-toggle" type="button"
+                class="inline-flex items-center justify-center rounded-md p-2 border border-slate-300"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <i id="icon-open" data-feather="menu"></i>
+          <i id="icon-close" data-feather="x" class="hidden"></i>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="sm:hidden hidden mt-3 border-t border-slate-200 pt-3">
+      <div class="flex flex-col gap-2">
+        <a href="#who" class="px-2 py-2 text-sm font-medium hover:underline">私たちについて</a>
+        <a href="#what" class="px-2 py-2 text-sm font-medium hover:underline">事業内容</a>
+        <a href="#partners" class="px-2 py-2 text-sm font-medium hover:underline">パートナー</a>
+        <a href="#contact" class="px-2 py-2 text-sm font-medium hover:underline">お問い合わせ</a>
+        <a href="/" hreflang="en" class="px-2 py-2 text-sm font-medium border rounded-md hover:bg-slate-100 w-max">English</a>
+      </div>
+    </div>
   </div>
 </header>
+
+
 
 
   <main id="main">
@@ -230,6 +258,41 @@
   <script>
     feather.replace();
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btn = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    menu.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      btn.setAttribute('aria-expanded', 'false');
+      menu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+
+    // Escape key closes
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    });
+  }
   </script>
 </body>
 </html>
